@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Void</title>
+<link rel="icon" href="/logo.svg">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- AUTH SCREEN -->
+<div id="auth-screen" class="auth-wrapper">
+  <div class="auth-card">
+    <img src="/logo.svg" class="auth-logo" alt="Void">
+    <h1 id="auth-title">Welcome to Void</h1>
+    <p class="sub" id="auth-subtitle">Sign in to continue</p>
+    <div id="auth-error" class="error-msg hidden"></div>
+    <form id="auth-form">
+      <div class="input-group">
+        <input type="text" id="username" placeholder="Username" autocomplete="username" required>
+      </div>
+      <div class="input-group">
+        <input type="password" id="password" placeholder="Password" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="btn-primary" id="auth-submit">Sign In</button>
+    </form>
+    <div class="auth-switch">
+      <span id="auth-switch-text">Don't have an account?</span>
+      <a id="auth-switch-link">Create one</a>
+    </div>
+  </div>
+</div>
+
+<!-- APP SHELL -->
+<div id="app-shell" class="app-shell hidden">
+  <div class="cover-photo" id="cover-photo"></div>
+  <div class="profile-header">
+    <div class="avatar" id="my-avatar"></div>
+    <div>
+      <div class="name" id="my-name"></div>
+      <div style="font-size:13px;color:var(--void-text-dim);"><span class="status-dot"></span>Active</div>
+    </div>
+  </div>
+
+  <div class="tab-nav">
+    <div class="tab-pill active" data-tab="feed">Feed</div>
+    <div class="tab-pill" data-tab="community">Community</div>
+    <div class="tab-pill" data-tab="messages">Messages</div>
+    <div class="tab-pill" data-tab="notifications">Notifications</div>
+  </div>
+
+  <div id="tab-feed">
+    <div id="premium-panel" class="premium-customize-panel hidden">
+      <h3>✨ Void Premium — Customize Your Look</h3>
+      <div class="color-input-row">
+        <label>Primary color</label>
+        <input type="color" id="accent-color-picker" value="#e11d2e">
+        <input type="text" id="accent-color-text" placeholder="#cf0c18" maxlength="7">
+      </div>
+      <div class="color-input-row">
+        <label>Secondary color</label>
+        <input type="color" id="accent-color-secondary-picker" value="#0d0304">
+        <input type="text" id="accent-color-secondary-text" placeholder="#0d0304" maxlength="7">
+      </div>
+      <button class="btn-small" id="save-premium-customization">Save Look</button>
+    </div>
+    <div class="composer">
+      <textarea id="post-content" placeholder="What's happening?"></textarea>
+      <div class="composer-actions">
+        <label style="font-size:13px;color:var(--void-text-dim);cursor:pointer;">
+          📷 <input type="file" id="post-media" accept="image/*,video/*" style="display:none;">
+        </label>
+        <button class="btn-small" id="post-submit">Post</button>
+      </div>
+    </div>
+    <div id="feed-list"></div>
+  </div>
+
+  <div id="tab-community" class="hidden">
+    <div class="empty-state">Community groups coming in Phase 3.</div>
+  </div>
+
+  <div id="tab-messages" class="hidden">
+    <div class="empty-state">Messaging coming in Phase 3.</div>
+  </div>
+
+  <div id="tab-notifications" class="hidden">
+    <div id="notifications-list"></div>
+  </div>
+</div>
+
+<div id="bottom-nav" class="bottom-nav hidden">
+  <button class="nav-item active" data-tab="feed">Feed</button>
+  <button class="nav-item" data-tab="community">Community</button>
+  <button class="nav-item" data-tab="messages">Messages</button>
+  <button class="nav-item" data-tab="notifications">Alerts</button>
+  <button class="nav-item" id="logout-btn">Logout</button>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
